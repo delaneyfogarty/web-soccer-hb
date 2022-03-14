@@ -15,57 +15,70 @@ const teamTwoLabel = document.getElementById('team-two-name');
 // create an array to hold on to the state of past games
 
 let name1 = '';
-let name2 =  '';
+let name2 = '';
 let score1 = 0;
 let score2 = 0;
+let nameOneInput = document.getElementByName('team-one')[0];
+let nameTwoInput = document.getElementByName('team-two')[0];
 
-nameFormButton.addEventListener('click', (e) => {
+nameFormButton.addEventListener('click', () => {
     // get the name data from the form
 
     // set the state to this data from the form
+    name1 = nameOneInput.value;
+    name2 = nameTwoInput.value;
 
     // reset the form values
+    nameOneInput.reset();
+    nameTwoValue.reset();
 
     // refresh the current game element with new data by calling the appropriate function
+    refreshCurrentGameEl();
 });
 
 
 teamOneAddButton.addEventListener('click', () => {
     // increment the current state for team one's score
-    
+    score1++;
+
     // refresh the current game element with new data by calling the appropriate function
+    refreshCurrentGameEl();
 });
 
 teamTwoAddButton.addEventListener('click', () => {
     // increment the current state for team two's score
-
+    score2++;
     // refresh the current game element with new data by calling the appropriate function
+    refreshCurrentGameEl();
 });
 
 teamOneSubtractButton.addEventListener('click', () => {
     // decrement the current state for team one's score
+    score1--;
 
     // refresh the current game element with new data by calling the appropriate function
+    refreshCurrentGameEl();
 });
 
 teamTwoSubtractButton.addEventListener('click', () => {
     // decrement the current state for team two's score
-
+    score2--;
     // refresh the current game element with new data by calling the appropriate function
+    refreshCurrentGameEl();
 });
 
 finishGameButton.addEventListener('click', () => {
-    
+
     // add the current game to an array of games in state
     // it will be helpful to keep track of these games as objects with 4 properties, one for each piece of state we're tracking
     // for example, make an object like this: { name1: 'ducks', name2: 'bears' ,score1: 1, score2: 2 } 
     // then push it to your array in state
     // (be sure to make a new object. do not declare the object in global scope and mutate it for reuse. This would cause difficult bugs)
-    
+
     displayAllGames();
 
     // reset the state to zero and empty strings
-    
+
     // refresh the current game element with new data by calling the appropriate function
 });
 
@@ -76,10 +89,10 @@ function refreshCurrentGameEl() {
     teamTwoLabel.textContent = name2;
 
     // const gameEl = . . . 
-    // make a new gameEl here by calling renderGame with the approriate arguments. 
+    // make a new gameEl here by calling renderGame with the appropriate arguments. 
     // Check the renderGame function declaration in render-utils.js to figure out the correct arguments to pass to this function 
     // In render-utils.js as yourself: How many arguments does the function take? What order does it take them in?
-    
+
     gameEl.classList.add('current');
 
     currentGameEl.append(gameEl);
