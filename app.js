@@ -1,5 +1,5 @@
 // import functions and grab DOM elements
-import { renderGame, renderTeam } from './render-utils.js';
+import { renderGame } from './render-utils.js';
 const currentGameEl = document.getElementById('current-game-container');
 const pastGamesEl = document.getElementById('past-games-container');
 
@@ -83,7 +83,7 @@ finishGameButton.addEventListener('click', () => {
         score1: score1,
         score2: score2,
     };
-    console.log(pastSoccerGames);
+
     pastSoccerGames.push(currentSoccerGame);
 
     displayAllGames();
@@ -124,7 +124,7 @@ function displayAllGames() {
 
     // loop through the past games in state
     for (let game of pastSoccerGames) {
-        console.log(game);
+
         const gamesEl = renderGame(game.name1, game.name2, game.score1, game.score2);
         gamesEl.classList.add('current');
         pastGamesEl.append(gamesEl);
